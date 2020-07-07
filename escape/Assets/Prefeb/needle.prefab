@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1770372022}
   m_Layer: 0
   m_Name: needle
-  m_TagString: Untagged
+  m_TagString: Needle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558da46d039751a4ab0cc747d73fe1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needles: []
 --- !u!61 &1770372022
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    private Rigidbody2D groundRigidbody;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +17,20 @@ public class Ground : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.collider.tag =="Needle" && !GameManager.instance.isGameover)
+        
+
+        if(other.tag =="Needle" && !GameManager.instance.isGameover)
         {
             GameManager.instance.AddScore(1);
+
         }
     }
 }
+/*OnTrigger 계열 : 충돌시 통과
+ * OnCollision 계열 : 충돌시 밀어냄
+ * 
+ * 
+ * 
+ */

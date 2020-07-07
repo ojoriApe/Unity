@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -39,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //스페이스바 누르면 다시시작
         if (isGameover && Input.GetKey(KeyCode.Space))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -50,7 +49,25 @@ public class GameManager : MonoBehaviour
         if(!isGameover)
         {
             score += newScore;
-            scoreText.text = "점수 : " + score;
+            scoreText.text = "Score : " + score;
         }
+    }
+    //플래이어 사망 시 게임오버를 실행하는 메서드
+    public void OnplayerDead()
+    {
+        isGameover = true;
+        gameoverUI.SetActive(true);
+
+        //BestScore 키로 저장된 최고기록 가겨오기
+        float bestScore = PlayerPrefs.GetFloat("BestScore");
+
+        //이전까지의 최고기록보다 현재 기록이 더 크다면
+        if (score>bestScore)
+        {
+            bestScore = score;
+            PlayerPrefs.SetFloat("BestScore", bestScore);
+        }
+
+        scoreText.text = "Best Score: " + (int)bestScore;
     }
 }
